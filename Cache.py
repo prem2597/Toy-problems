@@ -7,7 +7,20 @@ class LRU(object) :
         self.hash_table = {}
         self.item_list = []
 
-    
+    def put(self, item) :
+        pass
+
+    def delete(self, item):
+        pass
+
+    def check(self) :
+        pass
+
+    def get(self, item) :
+        pass
+
+    def print_cache(object) :
+        pass
 
 def main():
     LRU

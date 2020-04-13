@@ -7,9 +7,9 @@ class LRUitem(object):
         self.timestamp = datetime.now()
 
 class LRU(object) :
-    def __init__(self, length, delta=None):
-        self.length = length
-        self.delta = delta
+    def __init__(self, len, prevtime=None):
+        self.len = len
+        self.prevtime = prevtime
         self.hash = {}
         self.item_list = []
 
@@ -20,7 +20,7 @@ class LRU(object) :
             self.item_list[:] = self.item_list[:item_index] + self.item_list[item_index + 1:]
             self.item_list.insert(0, item)
         else :
-            if len(self.item_list) > self.length:
+            if len(self.item_list) > self.len:
                 self.delete(self.item_list[-1])
             self.hash[item.key] = item
             self.item_list.insert(0, item)
@@ -37,7 +37,7 @@ class LRU(object) :
             recent = datetime.now()
             for item in self.item_list:
                 time = recent - item.timestamp
-                if time.seconds > self.delta:
+                if time.seconds > self.prevtime:
                     yield item
         map(lambda x: self.delete(x), old_items())
 
@@ -46,10 +46,3 @@ class LRU(object) :
         if item.key in self.hash:
             item_index = self.item_list.index(item)
             yield self.item_list[item_index]
-
-
-# def main():
-#     LRU
-
-# if __name__ == "__main__":
-#     main()

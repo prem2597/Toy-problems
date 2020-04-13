@@ -16,7 +16,7 @@ class TestMethods(unittest.TestCase) :
     one = LRUitem(1, 'one')
     two = LRUitem(2, 'two')
     three = LRUitem(3, 'three')
-    cache = LRU(length = 3, delta = 5)
+    cache = LRU(len = 3, prevtime = 5)
     cache.put(one)
     cache.put(two)
     cache.put(three)

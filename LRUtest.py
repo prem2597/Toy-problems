@@ -39,8 +39,8 @@ class TestMethods(unittest.TestCase) :
     # print_cache(cache)
     # print ("#" * 20)
 
-    # def cache(self) :
-    #     self.assertEqual(cache.get(one), 'one')
+    def cache(self) :
+        self.assertEqual(cache.get(one), 'one')
 
 
 if __name__ == '__main__' :

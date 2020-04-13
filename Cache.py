@@ -9,7 +9,6 @@ class LRU(object) :
 
     def put(self, item) :
         pass
-    
 
     def delete(self, item):
         pass
@@ -23,8 +22,8 @@ class LRU(object) :
     def print_cache(object) :
         pass
 
-def main():
-    LRU
+# def main():
+#     LRU
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()

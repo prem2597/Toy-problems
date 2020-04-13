@@ -7,6 +7,8 @@ class LRU(object) :
         self.hash_table = {}
         self.item_list = []
 
+    
+
 def main():
     LRU
 

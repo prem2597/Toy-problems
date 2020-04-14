@@ -37,6 +37,7 @@ The flask executable is a simple command-line runner for Flask apps. It simply c
     In default, it works on 5000
     export FLASK_RUN_PORT=8000
     flask run --port=2000
+    
 
 8. How is Flask different from the tiny webserver?
 Flask  is not a web server. It is a micro web application framework. That means it is basically a set of tools and libraries that make it easier to build web applications in Python. Flask will include a web server that can be used for testing and development.

@@ -1,48 +1,46 @@
 from datetime import datetime
 
-class LRUitem(object):
-    def __init__(self, key, item) :
-        self.key = key
-        self.item = item
-        self.timestamp = datetime.now()
-
 class LRU(object) :
-    def __init__(self, len, prevtime=None):
-        self.len = len
-        self.prevtime = prevtime
+    def __init__(self):
+        super().__init__()
+        self.timestamp = datetime.now()
+        self.size = 5
         self.hash = {}
         self.item_list = []
 
-    def put(self, item) :
+    def put(self, key, value) :
         # pass
-        if item.key in self.hash:
-            item_index = self.item_list.index(item)
+        if key in self.hash :
+            print("Yes")
+            item_index = self.item_list.index(key)
+            print(item_index)
             self.item_list[:] = self.item_list[:item_index] + self.item_list[item_index + 1:]
-            self.item_list.insert(0, item)
+            print(self.item_list)
+            self.item_list.insert(0, key)
+            print(self.item_list)
         else :
-            if len(self.item_list) > self.len:
+            if len(self.item_list) > self.size :
+                print("True")
                 self.delete(self.item_list[-1])
-            self.hash[item.key] = item
-            self.item_list.insert(0, item)
+            self.hash[key] = value
+            self.item_list.insert(0, key)
 
+    def delete(self, key) :
+        # self.hash.pop(key, None)
+        del self.hash[key]
+        del self.item_list[self.item_list.index(key)]
 
-    def delete(self, item):
-        # pass
-        del self.hash[item.key]
-        del self.item_list[self.item_list.index(item)]
+    def get(self, key) :
+        if key in self.hash:
+            yield self.hash[key]
 
-    def check(self) :
-        # pass
-        def old_items():
-            recent = datetime.now()
-            for item in self.item_list:
-                time = recent - item.timestamp
-                if time.seconds > self.prevtime:
-                    yield item
-        map(lambda x: self.delete(x), old_items())
+    def frequency(self)-> int :
+        return len(self.hash)
 
-    def get(self, item) :
-        # pass
-        if item.key in self.hash:
-            item_index = self.item_list.index(item)
-            yield self.item_list[item_index]
+    def get_cache(self) :
+        for key, item in self.hash.items() :
+            if None:
+                pass
+            else :
+                print (f"index: {key} " + f"key: {item} ")
+

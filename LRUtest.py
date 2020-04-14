@@ -3,45 +3,44 @@ from Cache import *
 from time import sleep
 
 class TestMethods(unittest.TestCase) :
-    # def setUp(self):
-    #     return super().setUp()
-    # 
+    def setUp(self):
+        return super().setUp()
+
+    def test_func_1(self):
+        print ("Initial cache items for test case 1.")
+        one = LRU()
+        one.put(1,"Hello")
+        one.put(2,"How")
+        one.put(3,"are")
+        one.put(4,"you")
+        one.put(5,"Data")
+        one.put(6,"King")
+        one.put(7,"King")
+        print ("#" * 20)
+        assert(one.hash.get(1)) == None
+        assert(one.hash.get(7)) == "King"
+
+    def test_func_2(self):
+        print ("Initial cache items for test case 2.")
+        two = LRU()
+        two.put(1,"Prem")
+        two.put(2,"vathi")
+        two.put(3,"re")
+        print ("#" * 20)
+        assert(two.hash.get(1)) == "Prem"
+        assert(two.hash.get(7)) == None
+        assert(two.frequency()) == 3
+
+    def test_func_3(self):
+        print ("Initial cache items for test case 3.")
+        three = LRU()
+        three.put(1,"King")
+        three.put(2,"Hello")
+        three.put(3,"Hi")
+        three.put(4,"Queen")
+        print ("#" * 20)
+        assert(three.hash.get(2))=="Hello"
+        assert(three.hash.get(1))=="King"
     
-    def print_cache(cache) :
-        # pass
-        for i, item in enumerate(cache.item_list) :
-            print (f"index: {i} " + f"key: {item.key} " + f"item: {item.item} " + f"time: {item.timestamp} ")
-
-    print ("Initial cache items.")
-    one = LRUitem(1, 'one')
-    two = LRUitem(2, 'two')
-    three = LRUitem(3, 'three')
-    cache = LRU(len = 3, prevtime = 5)
-    cache.put(one)
-    cache.put(two)
-    cache.put(three)
-    print_cache(cache)
-    print ("#" * 20)
-
-    # print ("Insert a existing item: {0}.".format(one.key))
-    # cache.put(one)
-    # print_cache(cache)
-    # print ("#" * 20)
-
-    # print ("Insert another existing item: {0}.".format(two.key))
-    # cache.put(two)
-    # print_cache(cache)
-    # print ("#" * 20)
-
-    # print ("Validate items after a period of time")
-    # sleep(6)
-    # cache.check()
-    # print_cache(cache)
-    # print ("#" * 20)
-
-    def cache(self) :
-        self.assertEqual(cache.get(one), 'one')
-
-
 if __name__ == '__main__' :
     unittest.main()
